@@ -8,12 +8,13 @@ nodeComicDict = {}#collect.OrderedDict()
 #https://docs.python.org/3.7/library/csv.html
 with open('nodes.csv', 'r') as nodefile:
     next(nodefile)
-    nodeReader = csv.reader(nodefile, skipinitialspace=True, delimiter=',', quotechar='"')
+    nodeReader = csv.reader(nodefile, delimiter=',')
     for row in nodeReader:
         if row[1] == 'comic':
             nodeComicDict[row[0]] = row[1]
         elif row[1] == 'hero':
             nodeHeroDict[row[0]] = row[1]
+
 
 print(nodeReader)
 print(nodeComicDict)
@@ -61,7 +62,7 @@ mini= 1
 
 with open('edges.csv', 'r') as edgefile:
     next(edgefile)
-    edgeReaderCH = csv.reader(edgefile, skipinitialspace=True, delimiter=',', quotechar='"')
+    edgeReaderCH = csv.reader(edgefile, skipinitialspace=True, delimiter=',')
     for row in edgeReaderCH:
         edgeComicHeroesDict[row[0]].append(row[1])
     print(edgeComicHeroesDict)
